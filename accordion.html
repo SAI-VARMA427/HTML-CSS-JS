@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="accordion.css">
+  <title>Advanced Accordion</title>
+</head>
+<body>
+<h4>Here's an example of how to create an accordion using HTML and a bit of CSS and JavaScript.</h4>
+<div class="body">
+<div class="accordion">
+  <!-- First Accordion Item -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      Definition
+    </div>
+    <div class="accordion-content">
+      <p>An accordion is a graphical user interface element that organizes content 
+      into expandable and collapsible sections or panels. Each section typically has
+      a header, which can be clicked to reveal or hide the content associated with that
+      section. Accordions are commonly used in web design to help manage large amounts
+      of information within a limited space, allowing users to expand only the sections
+      they're interested in.</p>
+    </div>
+  </div>
+
+  <!-- Second Accordion Item -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      Where we use
+    </div>
+    <div class="accordion-content">
+      <p>Frequently Asked Questions (FAQs)</p>
+      <p>Content Organization in Mobile Views</p>
+      <p>Product Information on E-Commerce Sites</p>
+      <p>Collapsible Menus in Navigation</p>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  // JavaScript to handle accordion toggle with animation
+  function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    const isOpen = content.classList.contains("open");
+
+    // Close all accordion items
+    document.querySelectorAll(".accordion-header").forEach(hdr => hdr.classList.remove("active"));
+    document.querySelectorAll(".accordion-content").forEach(item => item.classList.remove("open"));
+
+    // Open the clicked item if it was previously closed
+    if (!isOpen) {
+      header.classList.add("active");
+      content.classList.add("open");
+    }
+  }
+</script>
+</body>
+</html>
+
