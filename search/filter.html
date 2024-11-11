@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational Tabs with Search and Filter</title>
+  <link rel="stylesheet" href="filter.css">
+</head>
+<body>
+  <div class="tab-container">
+    <!-- Tab Buttons -->
+    <div class="tab-buttons">
+      <button class="tab-button active" onclick="openTab(event, 'math')">Math</button>
+      <button class="tab-button" onclick="openTab(event, 'science')">Science</button>
+      <button class="tab-button" onclick="openTab(event, 'history')">History</button>
+    </div>
+
+    <!-- Search and Filter Bar -->
+    <div class="search-filter">
+      <input type="text" id="searchInput" placeholder="Search topics..." oninput="filterContent()">
+      <select id="filterSelect" onchange="filterContent()">
+        <option value="all">All</option>
+        <option value="introduction">Introduction</option>
+        <option value="advanced">Advanced</option>
+        <option value="examples">Examples</option>
+      </select>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Math Tab Content -->
+      <div id="math" class="tab-content-item active">
+        <h3>Math Topics</h3>
+        <div class="content-item" data-category="introduction">Basic Algebra - Learn the fundamentals of algebra including variables and equations.</div>
+        <div class="content-item" data-category="advanced">Calculus - Dive deep into differential and integral calculus.</div>
+        <div class="content-item" data-category="examples">Math Examples - Practice with various algebraic and calculus problems.</div>
+      </div>
+
+      <!-- Science Tab Content -->
+      <div id="science" class="tab-content-item">
+        <h3>Science Topics</h3>
+        <div class="content-item" data-category="introduction">Introduction to Biology - Learn about cells, genetics, and more.</div>
+        <div class="content-item" data-category="advanced">Physics Mechanics - Advanced topics in Newtonian mechanics.</div>
+        <div class="content-item" data-category="examples">Chemistry Experiments - Explore various chemical reactions with practical examples.</div>
+      </div>
+
+      <!-- History Tab Content -->
+      <div id="history" class="tab-content-item">
+        <h3>History Topics</h3>
+        <div class="content-item" data-category="introduction">Ancient Civilizations - Overview of ancient cultures and their impact.</div>
+        <div class="content-item" data-category="advanced">World Wars - In-depth study of WWI and WWII.</div>
+        <div class="content-item" data-category="examples">Case Studies - Specific events with historical significance.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // script.js
+
+function openTab(event, tabId) {
+  // Hide all tab content
+  let contentItems = document.querySelectorAll('.tab-content-item');
+  contentItems.forEach(item => item.classList.remove('active'));
+
+  // Remove active class from all buttons
+  let tabButtons = document.querySelectorAll('.tab-button');
+  tabButtons.forEach(button => button.classList.remove('active'));
+
+  // Show the selected tab content and activate the clicked tab button
+  document.getElementById(tabId).classList.add('active');
+  event.currentTarget.classList.add('active');
+  
+  // Clear search and filter input
+  document.getElementById("searchInput").value = "";
+  document.getElementById("filterSelect").value = "all";
+  filterContent(); // Reset filtering
+}
+
+function filterContent() {
+  const searchInput = document.getElementById("searchInput").value.toLowerCase();
+  const filterSelect = document.getElementById("filterSelect").value;
+  
+  // Get the currently active tab content
+  const activeTab = document.querySelector('.tab-content-item.active');
+  if (!activeTab) return;
+
+  // Filter content items based on search input and category
+  const contentItems = activeTab.querySelectorAll('.content-item');
+  contentItems.forEach(item => {
+    const textMatch = item.textContent.toLowerCase().includes(searchInput);
+    const categoryMatch = filterSelect === "all" || item.getAttribute("data-category") === filterSelect;
+    
+    // Show or hide item based on match
+    if (textMatch && categoryMatch) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+</script>
+</body>
+</html>

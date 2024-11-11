@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Course - Tabs</title>
+  <link rel="stylesheet" href="tabs.css">
+</head>
+<body>
+  <div class="tab-container">
+    <!-- Tab Buttons -->
+    <div class="tab-buttons">
+      <button class="tab-button active" onclick="openTab(event, 'html')">HTML Basics</button>
+      <button class="tab-button" onclick="openTab(event, 'css')">CSS Basics</button>
+      <button class="tab-button" onclick="openTab(event, 'javascript')">JavaScript Essentials</button>
+      <button class="tab-button" onclick="openTab(event, 'advanced')">Advanced Topics</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <div id="html" class="tab-content-item active">
+        <h2>Introduction to HTML</h2>
+        <p>HTML (HyperText Markup Language) is the standard markup language used to create web pages. HTML elements are represented by tags, which define content structure. This tab covers the basics of HTML, including elements, attributes, and common tags like paragraphs, headings, links, and images.</p>
+        <ul>
+          <li>Understanding the Document Structure</li>
+          <li>Common HTML Tags</li>
+          <li>Embedding Media (Images, Videos)</li>
+        </ul>
+      </div>
+      <div id="css" class="tab-content-item">
+        <h2>CSS Basics</h2>
+        <p>CSS (Cascading Style Sheets) is used to style and layout web pages. CSS controls the visual presentation of HTML elements, such as colors, fonts, and spacing. This tab covers the fundamentals of CSS, including selectors, properties, and responsive design techniques.</p>
+        <ul>
+          <li>Selectors and Properties</li>
+          <li>Working with Colors and Fonts</li>
+          <li>Responsive Web Design</li>
+        </ul>
+      </div>
+      <div id="javascript" class="tab-content-item">
+        <h2>JavaScript Essentials</h2>
+        <p>JavaScript is a powerful scripting language that adds interactivity to web pages. It allows you to manipulate HTML and CSS in real-time. This tab will introduce you to the basics of JavaScript, including variables, functions, and event handling.</p>
+        <ul>
+          <li>Variables and Data Types</li>
+          <li>Functions and Events</li>
+          <li>DOM Manipulation</li>
+        </ul>
+      </div>
+      <div id="advanced" class="tab-content-item">
+        <h2>Advanced Web Development</h2>
+        <p>This section covers more advanced topics in web development, such as frameworks, APIs, and advanced JavaScript features. You'll explore popular libraries and frameworks like React, and learn about connecting your frontend to a backend with APIs.</p>
+        <ul>
+          <li>JavaScript Libraries (e.g., React, jQuery)</li>
+          <li>Using APIs and AJAX</li>
+          <li>Server-Side Concepts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // script.js
+function openTab(event, tabId) {
+  // Hide all tab content and remove active class from tab buttons
+  const contentItems = document.querySelectorAll('.tab-content-item');
+  const tabButtons = document.querySelectorAll('.tab-button');
+  
+  contentItems.forEach(item => {
+    item.classList.remove('active');
+    item.style.opacity = '0';
+  });
+  
+  tabButtons.forEach(button => button.classList.remove('active'));
+
+  // Show the current tab and add the active class to the clicked button
+  const activeTab = document.getElementById(tabId);
+  activeTab.classList.add('active');
+  activeTab.style.opacity = '1';
+  
+  event.currentTarget.classList.add('active');
+}
+  </script>
+</body>
+</html>
