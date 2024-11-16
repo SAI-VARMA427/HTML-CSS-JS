@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow Gallery with Thumbnails</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Slideshow Gallery -->
+  <div class="slideshow-container">
+    <!-- Main Slides -->
+    <div class="slide fade">
+      <img src="images/Image2.jpg" alt="Slide 1">
+      <div class="caption">Beautiful Landscape 1</div>
+    </div>
+    <div class="slide fade">
+      <img src="images/Image4.jpg" alt="Slide 2">
+      <div class="caption">Serene Nature 2</div>
+    </div>
+    <div class="slide fade">
+      <img src="images/Image3.jpg" alt="Slide 3">
+      <div class="caption">Vibrant Cityscape 3</div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="thumbnail-container">
+    <img class="thumbnail active" src="images/Image2.jpg" alt="Thumbnail 1" onclick="currentSlide(1)">
+    <img class="thumbnail" src="images/Image4.jpg" alt="Thumbnail 2" onclick="currentSlide(2)">
+    <img class="thumbnail" src="images/Image3.jpg" alt="Thumbnail 3" onclick="currentSlide(3)">
+  </div>
+
+  <script>
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/Previous Controls
+function changeSlide(n) {
+  showSlides(slideIndex += n);
+}
+
+// Dot or Thumbnail Click
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+// Display the slides
+function showSlides(n) {
+  const slides = document.getElementsByClassName("slide");
+  const thumbnails = document.getElementsByClassName("thumbnail");
+
+  if (n > slides.length) slideIndex = 1;
+  if (n < 1) slideIndex = slides.length;
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  for (let i = 0; i < thumbnails.length; i++) {
+    thumbnails[i].className = thumbnails[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  thumbnails[slideIndex - 1].className += " active";
+}
+/*
+// Automatic Slide Show (optional)
+setInterval(() => {
+  changeSlide(1);
+}, 5000); // Change slide every 5 seconds*/
+  </script>
+</body>
+</html>

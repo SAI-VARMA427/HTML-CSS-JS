@@ -1,0 +1,71 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Horizontal Navigation Bar */
+  .horizontal-nav {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    overflow-x: auto;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .horizontal-nav::-webkit-scrollbar {
+    height: 8px; /* Customize scrollbar height */
+  }
+  
+  .horizontal-nav::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .nav-list li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .nav-list li a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .nav-list li a {
+      font-size: 16px;
+      padding: 8px 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .nav-list li a {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+  }
+  

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Scrollable Side Menu</title>
+  <link rel="stylesheet" href="sidenav.css">
+</head>
+<body>
+  <!-- Floating Navigation Button -->
+  <div id="menuToggle" class="menu-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Side Menu -->
+  <aside id="sideMenu" class="side-menu">
+    <div class="menu-header">
+      <h2>Menu</h2>
+      <span class="close-btn" onclick="toggleMenu()">×</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">🏠 Home</a></li>
+        <li><a href="#services">💼 Services</a></li>
+        <li><a href="#about">📖 About</a></li>
+        <li><a href="#portfolio">📂 Portfolio</a></li>
+        <li><a href="#blog">✍ Blog</a></li>
+        <li><a href="#contact">📞 Contact</a></li>
+        <li><a href="#help">❓ Help</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="mainContent">
+    <h1>Creative Scrollable Side Menu</h1>
+    <p>This side menu offers a fresh design with animations and smooth transitions. Click the ☰ button to explore!</p>
+  </main>
+
+  <script>
+    function toggleMenu() {
+  const sideMenu = document.getElementById('sideMenu');
+  const mainContent = document.getElementById('mainContent');
+
+  if (sideMenu.classList.contains('open')) {
+    sideMenu.classList.remove('open');
+    mainContent.style.marginLeft = '0';
+  } else {
+    sideMenu.classList.add('open');
+    mainContent.style.marginLeft = '300px'; // Adjust based on menu width
+  }
+}
+  </script>
+</body>
+</html>
